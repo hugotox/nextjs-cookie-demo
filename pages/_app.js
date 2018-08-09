@@ -7,6 +7,7 @@ import { Provider } from 'react-redux';
 import withReduxStore from '../lib/with-redux-store';
 import Router from 'next/router';
 import { whoAmI } from '../lib/auth/actions';
+import styles from '../styles/global-styles';
 
 class ExampleApp extends App {
   static redirectToLogin(ctx) {
@@ -54,7 +55,12 @@ class ExampleApp extends App {
     return (
       <Container>
         <Provider store={reduxStore}>
-          <Component {...pageProps} />
+          <div>
+            <Component {...pageProps} />
+            <style jsx global>
+              {styles}
+            </style>
+          </div>
         </Provider>
       </Container>
     );

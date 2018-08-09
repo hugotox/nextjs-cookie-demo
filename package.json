@@ -20,7 +20,8 @@
     "react-dom": "^16.4.1",
     "react-redux": "^5.0.7",
     "redux": "^4.0.0",
-    "redux-thunk": "^2.3.0"
+    "redux-thunk": "^2.3.0",
+    "styled-jsx": "^3.0.2"
   },
   "prettier": {
     "singleQuote": true

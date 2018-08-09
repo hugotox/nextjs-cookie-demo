@@ -55,7 +55,7 @@ class Modal extends Component {
     return (
       <div className="wrapper">
         <div className="modal-overlay" onClick={onHide} />
-        <div className={'modal ' + (this.state.fadeIn ? 'fadeIn' : '')}>
+        <div className={'box modal ' + (this.state.fadeIn ? 'fadeIn' : '')}>
           {childrenWithProps}
         </div>
         <style jsx>{/*language=CSS*/ `
@@ -75,10 +75,6 @@ class Modal extends Component {
           }
 
           .modal {
-            padding: 15px 30px;
-            background-color: white;
-            border-radius: 4px;
-            box-shadow: 0px 2px 6px 1px hsla(0, 0%, 0%, 0.2);
             position: fixed;
             width: 400px;
             height: 60%;

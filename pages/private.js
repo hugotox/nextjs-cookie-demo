@@ -9,6 +9,9 @@ class Private extends Component {
         <Link href="/">
           <a>Home</a>
         </Link>
+        <div className="box">
+          <h2>yo</h2>
+        </div>
       </div>
     );
   }
