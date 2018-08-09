@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import ModalHeader from './ModalHeader';
 
 const modalHeaderType = <ModalHeader />.type;
-const animationSpeed = 250;
+const animationSpeed = 300;
 
 class Modal extends Component {
   static propTypes = {
@@ -24,6 +24,7 @@ class Modal extends Component {
       this.setState({ display: 'block' });
       setTimeout(() => {
         this.setState({ fadeIn: true });
+        document.body.style.overflow = 'hidden';
       }, 1);
     }
     if (this.props.visible && !nextProps.visible) {
@@ -33,6 +34,7 @@ class Modal extends Component {
       this.setState({ fadeIn: false });
       setTimeout(() => {
         this.setState({ display: 'none' });
+        document.body.style.overflow = '';
       }, animationSpeed);
     }
   }
@@ -53,7 +55,7 @@ class Modal extends Component {
       }
     });
     return (
-      <div className="wrapper">
+      <div className="wrapper" style={{ display: this.state.display }}>
         <div className="modal-overlay" onClick={onHide} />
         <div className={'box modal ' + (this.state.fadeIn ? 'fadeIn' : '')}>
           {childrenWithProps}
@@ -61,7 +63,6 @@ class Modal extends Component {
         <style jsx>{/*language=CSS*/ `
           .wrapper {
             position: relative;
-            display: ${this.state.display};
           }
 
           .modal-overlay {
