@@ -1,6 +1,7 @@
 const express = require('express');
 const next = require('next');
 const bodyParser = require('body-parser');
+const compression = require('compression');
 const cookieSession = require('cookie-session');
 
 const dev = process.env.NODE_ENV !== 'production';
@@ -14,6 +15,7 @@ app
     const server = express();
     const httpServer = require('http').Server(server);
 
+    server.use(compression());
     server.use(bodyParser.urlencoded({ extended: true }));
     server.use(bodyParser.json());
     server.use(

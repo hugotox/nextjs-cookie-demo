@@ -1,13 +1,13 @@
 import { cleanup } from 'react-testing-library';
-import renderWithRedux from '../lib/render-with-redux';
-import { reducer } from '../lib/init-store';
-import Index from '../pages';
+import renderWithRedux from '../../lib/render-with-redux';
+import { reducer } from '../../lib/init-store';
+import Home from './Home';
 
 describe('Index page tests', () => {
   afterEach(cleanup);
 
   it('should render', function() {
-    const { getByText } = renderWithRedux(<Index />, {
+    const { getByText } = renderWithRedux(<Home />, {
       reducer,
       initialState: {
         auth: {

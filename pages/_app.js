@@ -8,16 +8,21 @@ import withReduxStore from '../lib/with-redux-store';
 import Router from 'next/router';
 import { whoAmI } from '../lib/auth/actions';
 import styles from '../styles/global-styles';
+import Head from 'next/head';
+
+const loginPageUrl = '/login';
 
 class ExampleApp extends App {
   static redirectToLogin(ctx) {
     const { req, res } = ctx;
     const isServer = typeof window === 'undefined';
     if (isServer) {
-      res.writeHead(302, { Location: `/login?next=${req.originalUrl}` });
+      res.writeHead(302, {
+        Location: `${loginPageUrl}?next=${req.originalUrl}`
+      });
       res.end();
     } else {
-      Router.push(`/login?next=${ctx.asPath}`);
+      Router.push(`${loginPageUrl}?next=${ctx.asPath}`);
     }
   }
 
@@ -54,6 +59,9 @@ class ExampleApp extends App {
     const { Component, pageProps, reduxStore } = this.props;
     return (
       <Container>
+        <Head>
+          <title>Next.js Starter</title>
+        </Head>
         <Provider store={reduxStore}>
           <div>
             <Component {...pageProps} />

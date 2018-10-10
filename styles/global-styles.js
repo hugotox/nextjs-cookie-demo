@@ -1,7 +1,7 @@
 import css from 'styled-jsx/css';
 
 /*language=CSS*/
-export default css`
+export default css.global`
   .box {
     padding: 15px 30px;
     background-color: white;

@@ -2,7 +2,7 @@
   "name": "nextjs-starter",
   "version": "1.0.0",
   "description": "Next.js starter application with authentication, custom server and redux",
-  "author": "hugotox",
+  "author": "Hugo Pineda",
   "scripts": {
     "dev": "node server/server.js",
     "build": "next build",
@@ -13,31 +13,33 @@
   "dependencies": {
     "axios": "^0.18.0",
     "body-parser": "^1.18.3",
+    "compression": "^1.7.3",
     "cookie-session": "^2.0.0-beta.3",
     "express": "^4.16.3",
-    "next": "^6.1.1",
+    "next": "^7.0.1",
     "prop-types": "^15.6.2",
-    "react": "^16.4.1",
-    "react-dom": "^16.4.1",
+    "react": "^16.5.2",
+    "react-dom": "^16.5.2",
     "react-redux": "^5.0.7",
     "redux": "^4.0.0",
     "redux-thunk": "^2.3.0",
-    "styled-jsx": "^3.0.2"
-  },
-  "prettier": {
-    "singleQuote": true
+    "styled-jsx": "^3.1.0"
   },
   "devDependencies": {
     "axios-mock-adapter": "^1.15.0",
-    "babel-core": "7.0.0-bridge.0",
-    "babel-jest": "^23.4.2",
-    "enzyme": "^3.4.1",
-    "enzyme-adapter-react-16": "^1.2.0",
-    "jest": "^23.5.0",
+    "babel-jest": "^23.6.0",
+    "enzyme": "^3.6.0",
+    "enzyme-adapter-react-16": "^1.5.0",
+    "enzyme-redux": "^0.2.1",
+    "jest": "^23.6.0",
     "react-addons-test-utils": "^15.6.2",
-    "react-test-renderer": "^16.4.2",
-    "react-testing-library": "^5.0.0",
+    "react-test-renderer": "^16.5.2",
+    "react-testing-library": "^5.1.0",
     "redux-devtools-extension": "^2.13.5",
-    "redux-mock-store": "^1.5.3"
+    "redux-mock-store": "^1.5.3",
+    "redux-test-utils": "^0.3.0"
+  },
+  "prettier": {
+    "singleQuote": true
   }
 }
