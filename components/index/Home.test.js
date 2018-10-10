@@ -1,5 +1,5 @@
 import { cleanup } from 'react-testing-library';
-import renderWithRedux from '../../lib/render-with-redux';
+import renderWithRedux from '../../lib/test-utils/render-with-redux';
 import { reducer } from '../../lib/init-store';
 import Home from './Home';
 
