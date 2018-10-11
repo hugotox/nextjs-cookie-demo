@@ -37,7 +37,7 @@ export default css`
   .xclose {
     position: absolute;
     right: 15px;
-    top: 13px;
+    top: 12px;
     cursor: pointer;
     color: #a5a3a3;
     font-size: 16px;
@@ -48,7 +48,12 @@ export default css`
   }
 
   .modal-header {
-    margin: -15px -30px 0px;
-    padding: 5px 30px 10px 30px;
+    margin: -25px -30px 10px;
+    padding: 12px 30px 10px 30px;
+    background-color: #ecf0f1;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    color: #34495e;
+    border-bottom: none;
   }
 `;

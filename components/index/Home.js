@@ -21,7 +21,7 @@ class Home extends Component {
       return <div>No user found</div>;
     }
     return (
-      <div>
+      <div className="container">
         <h1>Hi {user.username}</h1>
         <h2>A dead simple, responsive boilerplate.</h2>
         <a href="/api/logout" onClick={this.handleLogout}>
