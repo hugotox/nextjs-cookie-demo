@@ -33,7 +33,7 @@ export default css.global`
   body {
     font-family: 'Raleway', sans-serif !important;
     font-size: 16px !important;
-    font-weight: 400 !important;
+    font-weight: 500 !important;
     color: ${COLORS.textRegular} !important;
     margin: 0;
     padding: 0;
