@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { connect } from 'react-redux';
 import { logout } from '../../lib/auth/actions';
 import Modal from '../../components/modal/Modal';
+import ModalHeader from '../modal/ModalHeader';
 
 class Home extends Component {
   state = {
@@ -38,6 +39,7 @@ class Home extends Component {
           onHide={() => this.setState({ showModal: false })}
           visible={this.state.showModal}
         >
+          <ModalHeader>With header</ModalHeader>
           Hola
         </Modal>
       </div>

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import ModalHeader from './ModalHeader';
+import styles from './styles';
 
 const modalHeaderType = <ModalHeader />.type;
 const animationSpeed = 300;
@@ -57,40 +58,10 @@ class Modal extends Component {
     return (
       <div className="wrapper" style={{ display: this.state.display }}>
         <div className="modal-overlay" onClick={onHide} />
-        <div className={'box modal ' + (this.state.fadeIn ? 'fadeIn' : '')}>
+        <div className={'box xmodal ' + (this.state.fadeIn ? 'fadeIn' : '')}>
           {childrenWithProps}
         </div>
-        <style jsx>{/*language=CSS*/ `
-          .wrapper {
-            position: relative;
-          }
-
-          .modal-overlay {
-            position: fixed;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: #e2e2e2;
-            opacity: 0.5;
-          }
-
-          .modal {
-            position: fixed;
-            width: 400px;
-            height: 60%;
-            left: calc(50% - 200px);
-            top: -10%;
-            opacity: 0;
-            transition: opacity ${animationSpeed}ms ease-in-out,
-              top ${animationSpeed}ms ease-in-out;
-          }
-
-          .modal.fadeIn {
-            opacity: 1;
-            top: 10%;
-          }
-        `}</style>
+        <style jsx>{styles}</style>
       </div>
     );
   }
