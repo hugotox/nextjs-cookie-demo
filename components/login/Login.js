@@ -26,30 +26,44 @@ class Login extends Component {
   render() {
     const { username, password } = this.state;
     return (
-      <div>
-        <h3>Login</h3>
-        <form onSubmit={this.handleSubmit}>
-          <label>Username</label>
-          <input
-            type="text"
-            name="username"
-            value={username}
-            onChange={this.handleOnChange}
-          />
-          <label>Password</label>
-          <input
-            type="password"
-            name="password"
-            value={password}
-            onChange={this.handleOnChange}
-          />
-          <input type="submit" value="Login" />
-        </form>
-        <style jsx>{`
+      <div className="container">
+        <div className="box">
+          <h3>Login</h3>
+          <form onSubmit={this.handleSubmit}>
+            <label>Username</label>
+            <input
+              type="text"
+              name="username"
+              value={username}
+              onChange={this.handleOnChange}
+              className="form-control"
+            />
+            <label>Password</label>
+            <input
+              type="password"
+              name="password"
+              value={password}
+              onChange={this.handleOnChange}
+              className="form-control"
+            />
+            <input type="submit" value="Login" className="btn btn-default" />
+          </form>
+        </div>
+        <style jsx>{/*language=CSS*/
+        `
           label,
           input {
             display: block;
             margin-bottom: 10px;
+          }
+
+          .box {
+            width: 400px;
+            margin: 50px auto;
+          }
+
+          .box h3 {
+            margin-top: 0;
           }
         `}</style>
       </div>

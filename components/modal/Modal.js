@@ -26,7 +26,7 @@ class Modal extends Component {
       setTimeout(() => {
         this.setState({ fadeIn: true });
         document.body.style.overflow = 'hidden';
-      }, 1);
+      }, 10);
     }
     if (this.props.visible && !nextProps.visible) {
       if (typeof window !== 'undefined') {
