@@ -20,7 +20,7 @@ export default class MyDocument extends Document {
             content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
           />
           <link
-            href="https://fonts.googleapis.com/css?family=Raleway:500,500i,600,600i"
+            href="https://fonts.googleapis.com/css?family=Raleway:300,300i"
             rel="stylesheet"
           />
           <link
