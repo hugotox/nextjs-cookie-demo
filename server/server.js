@@ -3,6 +3,7 @@ const next = require('next');
 const bodyParser = require('body-parser');
 const compression = require('compression');
 const cookieSession = require('cookie-session');
+const { createReadStream } = require('fs');
 
 const dev = process.env.NODE_ENV !== 'production';
 const port = process.env.PORT || 3000;
@@ -51,6 +52,11 @@ app
 
     server.get('/api/whoami', (req, res) => {
       res.send(req.session.user);
+    });
+
+    server.get('/service-worker.js', (req, res) => {
+      res.setHeader('content-type', 'text/javascript');
+      createReadStream('./server/service-worker.js').pipe(res);
     });
 
     server.get('*', (req, res) => handle(req, res));

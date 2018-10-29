@@ -9,6 +9,7 @@ import Router from 'next/router';
 import { whoAmI } from '../lib/auth/actions';
 import styles from '../styles/global-styles';
 import Head from 'next/head';
+import registerServiceWorker from '../lib/register-service-worker';
 
 const loginPageUrl = '/login';
 
@@ -53,6 +54,10 @@ class ExampleApp extends App {
       pageProps = await Component.getInitialProps(ctx);
     }
     return { pageProps };
+  }
+
+  componentDidMount() {
+    registerServiceWorker();
   }
 
   render() {
