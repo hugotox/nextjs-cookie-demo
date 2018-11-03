@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import Link from 'next/link';
 import { connect } from 'react-redux';
 import { logout } from '../../lib/auth/actions';
-import Modal from '../../components/modal/Modal';
-import ModalHeader from '../modal/ModalHeader';
+import Modal from '../ui/modal/Modal';
+import ModalHeader from '../ui/modal/ModalHeader';
 
 class Home extends Component {
   state = {
