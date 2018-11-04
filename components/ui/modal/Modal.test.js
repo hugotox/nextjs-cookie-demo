@@ -1,8 +1,10 @@
-import { render, fireEvent } from 'react-testing-library';
+import { render, cleanup } from 'react-testing-library';
 import Modal from './Modal';
 import ModalHeader from './ModalHeader';
 
 describe('Modal component tests', () => {
+  afterEach(cleanup);
+
   it('should render', function() {
     const onHideHandler = jest.fn();
     const { rerender } = render(
@@ -26,17 +28,24 @@ describe('Modal component tests', () => {
   });
 
   it('should hide when pressing ESC key', function() {
+    // Set-up event listener mock
+    const map = {};
+    window.addEventListener = jest
+      .fn()
+      .mockImplementation((event, callback) => {
+        map[event] = callback;
+      });
+
     const onHideHandler = jest.fn();
-    const { container } = render(
-      <Modal onHide={onHideHandler}>
+    render(
+      <Modal onHide={onHideHandler} visible={true}>
         <ModalHeader />
       </Modal>
     );
 
-    fireEvent.keyDown(document.getElementsByTagName('body')[0], {
-      key: 'Escape',
-      keyCode: 27,
-      which: 27
-    });
+    // Trigger keydown event
+    map.keydown({ key: 'Escape' });
+
+    expect(onHideHandler).toHaveBeenCalled();
   });
 });

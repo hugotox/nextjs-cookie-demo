@@ -23,7 +23,7 @@ class Modal extends Component {
   };
 
   componentDidMount() {
-    document.addEventListener('keyup', this.keyboardListener);
+    window.addEventListener('keydown', this.keyboardListener);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -45,12 +45,13 @@ class Modal extends Component {
 
   componentWillUnmount() {
     if (typeof window !== 'undefined') {
-      document.removeEventListener('keyup', this.keyboardListener);
+      window.removeEventListener('keydown', this.keyboardListener);
     }
   }
 
   keyboardListener = e => {
-    if (e.code === 'Escape') {
+    const key = e.key || e.keyCode;
+    if (key === 'Escape' || key === 'Esc' || key === 27) {
       const { onHide, visible } = this.props;
       if (visible) {
         onHide();
@@ -88,7 +89,10 @@ class Modal extends Component {
     return (
       <div className="wrapper" style={{ display: this.state.display }}>
         <div className="modal-overlay" onClick={onHide} />
-        <div className={'box xmodal ' + (this.state.fadeIn ? 'fadeIn' : '')}>
+        <div
+          className={'box xmodal ' + (this.state.fadeIn ? 'fadeIn' : '')}
+          data-testid="modal-body"
+        >
           {childrenWithProps}
         </div>
         <style jsx>{/*language=CSS*/

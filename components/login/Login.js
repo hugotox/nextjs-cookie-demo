@@ -37,6 +37,7 @@ class Login extends Component {
               value={username}
               onChange={this.handleOnChange}
               className="form-control"
+              data-testid="username-input"
             />
             <label>Password</label>
             <input
@@ -45,8 +46,14 @@ class Login extends Component {
               value={password}
               onChange={this.handleOnChange}
               className="form-control"
+              data-testid="password-input"
             />
-            <input type="submit" value="Login" className="btn btn-default" />
+            <input
+              type="submit"
+              value="Login"
+              className="btn btn-default"
+              data-testid="login-button"
+            />
           </form>
         </div>
         <style jsx>{/*language=CSS*/
