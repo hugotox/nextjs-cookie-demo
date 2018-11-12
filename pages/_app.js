@@ -6,7 +6,7 @@ import React from 'react';
 import { Provider } from 'react-redux';
 import withReduxStore from '../lib/with-redux-store';
 import Router from 'next/router';
-import { whoAmI } from '../lib/auth/actions';
+import { whoAmI } from '../components/login/actions';
 import styles from '../styles/global-styles';
 import Head from 'next/head';
 import registerServiceWorker from '../lib/register-service-worker';

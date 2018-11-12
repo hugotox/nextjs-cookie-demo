@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Link from 'next/link';
 import { connect } from 'react-redux';
-import { logout } from '../../lib/auth/actions';
+import { logout } from '../login/actions';
 import Modal from '../ui/modal/Modal';
 import ModalHeader from '../ui/modal/ModalHeader';
 

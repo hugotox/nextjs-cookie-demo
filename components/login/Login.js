@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'next/router';
-import { login } from '../../lib/auth/actions';
+import { login } from './actions';
 
 class Login extends Component {
   static isPublic = true;

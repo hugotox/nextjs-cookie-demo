@@ -1,7 +1,7 @@
 import { cleanup, fireEvent } from 'react-testing-library';
 import renderWithRedux from '../../lib/test-utils/render-with-redux';
 import Login from './Login';
-import * as actions from '../../lib/auth/actions';
+import * as actions from './actions';
 
 describe('Login page tests', () => {
   let spy;
