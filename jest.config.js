@@ -5,7 +5,6 @@ module.exports = {
     'components/**/*.{js, jsx}',
     'lib/**/*.{js, jsx}',
     'pages/**/*.{js,jsx}',
-    'server/**/*.{js, jsx}',
-    'shared/**/*.{js, jsx}'
+    'server/**/*.{js, jsx}'
   ]
 };

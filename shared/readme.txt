@@ -1,1 +1,0 @@
-Files inside this directory are importable server and client side
