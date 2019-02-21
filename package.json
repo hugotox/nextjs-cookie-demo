@@ -29,7 +29,6 @@
     "axios-mock-adapter": "^1.16.0",
     "babel-jest": "^24.1.0",
     "jest": "^24.1.0",
-    "merge": ">=1.2.1",
     "react-testing-library": "^5.9.0",
     "redux-devtools-extension": "^2.13.8"
   },
