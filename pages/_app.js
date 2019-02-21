@@ -1,6 +1,6 @@
 /*
-* Initializes the Redux Provider with the store
-*/
+ * Initializes the Redux Provider with the store
+ */
 import App, { Container } from 'next/app';
 import React from 'react';
 import { Provider } from 'react-redux';
@@ -27,7 +27,7 @@ class ExampleApp extends App {
     }
   }
 
-  static async getInitialProps({ Component, router, ctx }) {
+  static async getInitialProps({ Component, ctx }) {
     const { isPublic } = Component;
     const { reduxStore, req } = ctx;
     const isServer = typeof window === 'undefined';

@@ -1,10 +1,16 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { withRouter } from 'next/router';
 import { login } from './actions';
 
 class Login extends Component {
   static isPublic = true;
+
+  static propTypes = {
+    router: PropTypes.object.isRequired,
+    dispatch: PropTypes.func.isRequired
+  };
 
   state = {
     username: '',
@@ -30,8 +36,9 @@ class Login extends Component {
         <div className="box">
           <h3>Login</h3>
           <form onSubmit={this.handleSubmit}>
-            <label>Username</label>
+            <label htmlFor="username">Username</label>
             <input
+              id="username"
               type="text"
               name="username"
               value={username}
@@ -39,8 +46,9 @@ class Login extends Component {
               className="form-control"
               data-testid="username-input"
             />
-            <label>Password</label>
+            <label htmlFor="password">Password</label>
             <input
+              id="password"
               type="password"
               name="password"
               value={password}
@@ -48,12 +56,7 @@ class Login extends Component {
               className="form-control"
               data-testid="password-input"
             />
-            <input
-              type="submit"
-              value="Login"
-              className="btn btn-default"
-              data-testid="login-button"
-            />
+            <input type="submit" value="Login" className="btn btn-default" data-testid="login-button" />
           </form>
         </div>
         <style jsx>{/*language=CSS*/

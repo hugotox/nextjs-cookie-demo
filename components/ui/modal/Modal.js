@@ -1,3 +1,4 @@
+/* eslint-disable no-noninteractive-element-interactions */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import ModalHeader from './ModalHeader';
@@ -10,12 +11,18 @@ class Modal extends Component {
   static propTypes = {
     visible: PropTypes.bool,
     onHide: PropTypes.func.isRequired,
-    size: PropTypes.oneOf(['full', 'large', 'medium', 'small'])
+    size: PropTypes.oneOf(['full', 'large', 'medium', 'small']),
+    children: PropTypes.any
   };
 
   static defaultProps = {
     size: 'medium'
   };
+
+  constructor(props) {
+    super(props);
+    this.overlayRef = React.createRef();
+  }
 
   state = {
     fadeIn: false,
@@ -24,6 +31,7 @@ class Modal extends Component {
 
   componentDidMount() {
     window.addEventListener('keydown', this.keyboardListener);
+    this.overlayRef.current.addEventListener('click', this.props.onHide);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -46,6 +54,7 @@ class Modal extends Component {
   componentWillUnmount() {
     if (typeof window !== 'undefined') {
       window.removeEventListener('keydown', this.keyboardListener);
+      this.overlayRef.current.removeEventListener('click', this.props.onHide);
     }
   }
 
@@ -88,11 +97,8 @@ class Modal extends Component {
     }
     return (
       <div className="wrapper" style={{ display: this.state.display }}>
-        <div className="modal-overlay" onClick={onHide} />
-        <div
-          className={'box xmodal ' + (this.state.fadeIn ? 'fadeIn' : '')}
-          data-testid="modal-body"
-        >
+        <div className="modal-overlay" ref={this.overlayRef} />
+        <div className={'box xmodal ' + (this.state.fadeIn ? 'fadeIn' : '')} data-testid="modal-body">
           {childrenWithProps}
         </div>
         <style jsx>{/*language=CSS*/
@@ -123,8 +129,7 @@ class Modal extends Component {
             top: -10%;
             bottom: ${size === 'full' ? '0' : 'auto'};
             opacity: 0;
-            transition: opacity ${animationSpeed}ms ease-in-out,
-              top ${animationSpeed}ms ease-in-out;
+            transition: opacity ${animationSpeed}ms ease-in-out, top ${animationSpeed}ms ease-in-out;
           }
 
           .xmodal.fadeIn {

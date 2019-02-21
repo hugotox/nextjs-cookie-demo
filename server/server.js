@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const next = require('next');
 const bodyParser = require('body-parser');
@@ -63,10 +64,10 @@ app
 
     httpServer.listen(port, err => {
       if (err) throw err;
-      console.log('> Custom server ready on http://localhost:' + port);
+      console.log('> Custom server ready on http://localhost:' + port); // eslint-disable-line no-console
     });
   })
   .catch(ex => {
-    console.error(ex.stack);
+    console.error(ex.stack); // eslint-disable-line no-console
     process.exit(1);
   });

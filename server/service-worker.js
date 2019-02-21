@@ -1,3 +1,3 @@
-self.addEventListener('install', evt => {
-  console.log('Service worked installed');
+self.addEventListener('install', () => {
+  //console.log('Service worked installed');
 });

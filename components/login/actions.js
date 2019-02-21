@@ -20,7 +20,7 @@ export function logout() {
   return dispatch =>
     axios
       .get(`${BASE_URL}/api/logout`)
-      .then(resp => {
+      .then(() => {
         dispatch({ type: 'LOGOUT' });
         Router.push('/');
       })
@@ -48,7 +48,7 @@ export function whoAmI(cookie) {
         });
         return user;
       })
-      .catch(err => {
+      .catch(() => {
         return null;
       });
   };

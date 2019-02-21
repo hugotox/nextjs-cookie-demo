@@ -3,14 +3,22 @@ import PropTypes from 'prop-types';
 
 class ModalHeader extends Component {
   static propTypes = {
-    onHide: PropTypes.func
+    onHide: PropTypes.func,
+    children: PropTypes.any
+  };
+
+  handleKeyDown = e => {
+    const key = e.key || e.keyCode;
+    if (key === 'Enter') {
+      this.props.onHide();
+    }
   };
 
   render() {
     const { children, onHide } = this.props;
     return (
       <div className="modal-header">
-        <div className="xclose" onClick={onHide}>
+        <div className="xclose" onClick={onHide} onKeyDown={this.handleKeyDown} role="button" tabIndex={0}>
           <i className="fa fa-times" />
         </div>
         {children}

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import Link from 'next/link';
 import { connect } from 'react-redux';
 import { logout } from '../login/actions';
@@ -6,6 +7,11 @@ import Modal from '../ui/modal/Modal';
 import ModalHeader from '../ui/modal/ModalHeader';
 
 class Home extends Component {
+  static propTypes = {
+    dispatch: PropTypes.func.isRequired,
+    user: PropTypes.object
+  };
+
   state = {
     showModal: false
   };
@@ -32,13 +38,8 @@ class Home extends Component {
           <a>Private</a>
         </Link>
         <br />
-        <button onClick={() => this.setState({ showModal: true })}>
-          Show modal
-        </button>
-        <Modal
-          onHide={() => this.setState({ showModal: false })}
-          visible={this.state.showModal}
-        >
+        <button onClick={() => this.setState({ showModal: true })}>Show modal</button>
+        <Modal onHide={() => this.setState({ showModal: false })} visible={this.state.showModal}>
           <ModalHeader>With header</ModalHeader>
           Hola
         </Modal>
