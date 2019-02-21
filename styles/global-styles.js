@@ -31,10 +31,10 @@ export default css.global`
 
   html,
   body {
-    font-family: 'Raleway', sans-serif !important;
-    font-size: 16px !important;
-    font-weight: 300 !important;
-    color: ${COLORS.textRegular} !important;
+    font-family: 'Raleway', sans-serif ;
+    font-size: 16px ;
+    font-weight: 300 ;
+    color: ${COLORS.textRegular} ;
     margin: 0;
     padding: 0;
   }
@@ -73,6 +73,6 @@ export default css.global`
   select:focus,
   textarea:focus,
   button:focus {
-    outline: none !important;
+    outline: none ;
   }
 `;

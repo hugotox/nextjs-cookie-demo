@@ -27,7 +27,10 @@ export default class MyDocument extends Document {
             rel="stylesheet"
             href="https://stackpath.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
           />
-          <script src="https://use.fontawesome.com/a0f909848f.js" />
+          <link
+            rel="stylesheet"
+            href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+          />
         </Head>
         <body>
           <Main />
