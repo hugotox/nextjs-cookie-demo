@@ -1,4 +1,4 @@
-import { cleanup, fireEvent } from 'react-testing-library';
+import { cleanup, fireEvent } from '@testing-library/react';
 import renderWithRedux from '../../lib/test-utils/render-with-redux';
 import Login from './Login';
 import * as actions from './actions';

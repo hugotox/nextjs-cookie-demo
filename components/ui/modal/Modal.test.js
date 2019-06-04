@@ -1,4 +1,4 @@
-import { render, cleanup } from 'react-testing-library';
+import { render, cleanup } from '@testing-library/react';
 import Modal from './Modal';
 import ModalHeader from './ModalHeader';
 
