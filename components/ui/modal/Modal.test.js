@@ -1,3 +1,4 @@
+import React from 'react';
 import { render, cleanup } from '@testing-library/react';
 import Modal from './Modal';
 import ModalHeader from './ModalHeader';
@@ -30,11 +31,9 @@ describe('Modal component tests', () => {
   it('should hide when pressing ESC key', function() {
     // Set-up event listener mock
     const map = {};
-    window.addEventListener = jest
-      .fn()
-      .mockImplementation((event, callback) => {
-        map[event] = callback;
-      });
+    window.addEventListener = jest.fn().mockImplementation((event, callback) => {
+      map[event] = callback;
+    });
 
     const onHideHandler = jest.fn();
     render(

@@ -28,7 +28,6 @@ class ExampleApp extends App {
   }
 
   static async getInitialProps({ Component, ctx }) {
-    const { isPublic } = Component;
     const { reduxStore, req } = ctx;
     const isServer = typeof window === 'undefined';
     let user = null;
@@ -44,15 +43,16 @@ class ExampleApp extends App {
       user = reduxStore.getState().auth.user;
     }
 
-    if (!isPublic && !user) {
-      // anonymous user
-      this.redirectToLogin(ctx);
-    }
-
     let pageProps = {};
     if (Component.getInitialProps) {
       pageProps = await Component.getInitialProps(ctx);
     }
+
+    if (!pageProps.isPublic && !user) {
+      // anonymous user
+      this.redirectToLogin(ctx);
+    }
+
     return { pageProps };
   }
 

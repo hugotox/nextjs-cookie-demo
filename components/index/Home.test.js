@@ -1,3 +1,4 @@
+import React from 'react';
 import { cleanup } from '@testing-library/react';
 import renderWithRedux from '../../lib/test-utils/render-with-redux';
 import Home from './Home';

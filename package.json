@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Next.js starter application with authentication, custom server and redux",
   "author": "Hugo Pineda",
+  "license": "MIT",
   "scripts": {
     "dev": "node server/server.js",
     "build": "next build",

@@ -1,3 +1,4 @@
+import React from 'react';
 import { cleanup, fireEvent } from '@testing-library/react';
 import renderWithRedux from '../../lib/test-utils/render-with-redux';
 import Login from './Login';
