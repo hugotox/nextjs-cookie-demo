@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'next/router';
+import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { login } from './actions';
 
@@ -91,4 +92,7 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps)(withRouter(Login));
+export default compose(
+  withRouter,
+  connect(mapStateToProps)
+)(Login);
