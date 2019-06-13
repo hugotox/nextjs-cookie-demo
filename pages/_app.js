@@ -11,49 +11,51 @@ import styles from '../styles/global-styles';
 import Head from 'next/head';
 import registerServiceWorker from '../lib/register-service-worker';
 
-const loginPageUrl = '/login';
+export function makeRedirect(ctx, toUrl) {
+  const { req, res } = ctx;
+  const isServer = !!req;
+  if (isServer) {
+    res.writeHead(302, {
+      Location: `${toUrl}?next=${req.originalUrl}`
+    });
+    res.end();
+  } else {
+    Router.push(`${toUrl}?next=${ctx.asPath}`);
+  }
+}
 
-class ExampleApp extends App {
-  static redirectToLogin(ctx) {
-    const { req, res } = ctx;
-    const isServer = typeof window === 'undefined';
-    if (isServer) {
-      res.writeHead(302, {
-        Location: `${loginPageUrl}?next=${req.originalUrl}`
-      });
-      res.end();
-    } else {
-      Router.push(`${loginPageUrl}?next=${ctx.asPath}`);
+export async function checkUser({ Component, ctx }) {
+  const { reduxStore, req } = ctx;
+  const isServer = !!req;
+  let user = null;
+
+  if (isServer) {
+    // happens on page first load
+    const { cookie } = req.headers;
+    if (cookie) {
+      user = await reduxStore.dispatch(whoAmI(cookie));
     }
+  } else {
+    // happens on client side navigation
+    user = reduxStore.getState().auth.user;
   }
 
-  static async getInitialProps({ Component, ctx }) {
-    const { reduxStore, req } = ctx;
-    const isServer = typeof window === 'undefined';
-    let user = null;
+  let pageProps = {};
+  if (Component.getInitialProps) {
+    pageProps = await Component.getInitialProps(ctx);
+  }
 
-    if (isServer) {
-      // happens on page first load
-      const { cookie } = req.headers;
-      if (cookie) {
-        user = await reduxStore.dispatch(whoAmI(cookie));
-      }
-    } else {
-      // happens on client side navigation
-      user = reduxStore.getState().auth.user;
-    }
+  if (!pageProps.isPublic && !user) {
+    // anonymous user
+    makeRedirect(ctx, '/login');
+  }
 
-    let pageProps = {};
-    if (Component.getInitialProps) {
-      pageProps = await Component.getInitialProps(ctx);
-    }
+  return { pageProps };
+}
 
-    if (!pageProps.isPublic && !user) {
-      // anonymous user
-      this.redirectToLogin(ctx);
-    }
-
-    return { pageProps };
+class ExampleApp extends App {
+  static async getInitialProps(props) {
+    return checkUser(props);
   }
 
   componentDidMount() {

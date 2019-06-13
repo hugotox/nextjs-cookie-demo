@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, cleanup } from '@testing-library/react';
-import Modal from './Modal';
-import ModalHeader from './ModalHeader';
+import Modal from '../Modal';
+import ModalHeader from '../ModalHeader';
 
 describe('Modal component tests', () => {
   afterEach(cleanup);
