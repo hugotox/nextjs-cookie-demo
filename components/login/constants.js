@@ -1,6 +1,6 @@
-import getConfig from 'next/config';
+// import getConfig from 'next/config';
 
-const { publicRuntimeConfig } = getConfig();
-const { PORT } = publicRuntimeConfig;
+// const { publicRuntimeConfig } = getConfig();
+// const { PORT } = publicRuntimeConfig;
 
-export const BASE_URL = `http://localhost:${PORT}`;
+export const BASE_URL = '';
