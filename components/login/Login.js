@@ -61,7 +61,7 @@ class Login extends Component {
               className="form-control"
               data-testid="password-input"
             />
-            <input type="submit" value="Login" className="btn btn-default" data-testid="login-button" />
+            <input type="submit" value="Login" className="btn btn-primary" data-testid="login-button" />
           </form>
         </div>
         <style jsx>{/*language=CSS*/
