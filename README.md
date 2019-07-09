@@ -3,40 +3,51 @@
 Starter project using [Next.js](https://github.com/zeit/next.js/) with redux,
 cookie based authentication, server side rendering and tests set up.
 
-The user authentication is made in /pages/_app.js the first time the user access the page. It will use the session
-cookie from the `req` object provided by Express to call `/api/whoami` endpoint. This endpoint returns a user object
-or null if not authenticated.
+By default, authentication is not enforced for any page. To make pages available to authenticated users only, use the `withUserAuth` higher order component.
 
-The default behavior is to authenticate the user for all pages except public pages.
+The `withUserAuth` HOC will make an API call server side the first time the page is accessed. It will use the session
+cookie from the `req` object provided by Express to call `/api/whoami` endpoint. This endpoint returns a user object if authenticated, and saves it to redux store.
 
-To create a public page it needs to include `isPublic: true` in the props returned by `getInitialProps`
-
-E.g.
+### `withUserAuth` example usage:
 
 ```javascript
-class PublicPage extends Component {
-  static async getInitialProps() {
-    return {
-      isPublic: true
-    };
-  }
-  
-  // rest of component...
-}
+import withUserAuth from '../lib/auth/with-user-auth';
+import Home from '../components/index/Home';
+
+export default withUserAuth(Home);
 ```
 
-With function components:
+If no session cookie is found, it will redirect to `/login`, otherwise it will inject the `user` object as a prop to the wrapped component.
+
+### `withUserAuth` and `connect` example
+
+If you need to make your page component a redux container, just connect it to redux using the `compose` function:
 
 ```javascript
-function PublicPage() {
-  return <div>...</div>
-}
+import { connect } from 'react-redux';
+import { compose } from 'redux';
+import Home from '../components/index/Home';
+import withUserAuth from '../lib/auth/with-user-auth';
 
-PublicPage.getInitialProps = async function() {
+const mapStateToProps = state => {
   return {
-    isPublic: true
+    // return desired props from redux
   };
-}
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    // create your action dispatchers here
+  };
+};
+
+export default compose(
+  withUserAuth,
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )
+)(Home);
 ```
 
 ### Run in dev mode
