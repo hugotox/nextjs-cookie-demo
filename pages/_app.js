@@ -1,8 +1,8 @@
 import App, { Container } from 'next/app';
 import React from 'react';
 import { Provider } from 'react-redux';
-import withReduxStore from '../lib/with-redux-store';
-import styles from '../styles/global-styles';
+import withReduxStore from 'lib/with-redux-store';
+import styles from 'styles/global-styles';
 import Head from 'next/head';
 // import registerServiceWorker from '../lib/register-service-worker';
 

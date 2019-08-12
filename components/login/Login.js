@@ -1,26 +1,22 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { withRouter } from 'next/router';
-import { compose } from 'redux';
-import { connect } from 'react-redux';
-import { login } from './actions';
+import style from './Login.style';
 
-const Login = ({ dispatch, router }) => {
+const Login = ({ submitLogin }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-
-  const handleSubmit = e => {
-    e.preventDefault();
-    const { query } = router;
-    const next = query.next || '/';
-    dispatch(login({ username, password }, next));
-  };
 
   return (
     <div className="container">
       <div className="box">
         <h3>Login</h3>
-        <form onSubmit={handleSubmit} method="POST">
+        <form
+          onSubmit={e => {
+            e.preventDefault();
+            submitLogin({username, password});
+          }}
+          method="POST"
+        >
           <label htmlFor="username">Username</label>
           <input
             id="username"
@@ -44,44 +40,13 @@ const Login = ({ dispatch, router }) => {
           <input type="submit" value="Login" className="btn btn-primary" data-testid="login-button" />
         </form>
       </div>
-      <style jsx>{`
-        label,
-        input {
-          display: block;
-          margin-bottom: 10px;
-        }
-
-        .box {
-          width: 400px;
-          margin: 50px auto;
-        }
-
-        .box h3 {
-          margin-top: 0;
-        }
-      `}</style>
+      <style jsx>{style}</style>
     </div>
   );
 };
 
-Login.getInitialProps = async () => {
-  return {
-    isPublic: true
-  };
-};
-
 Login.propTypes = {
-  dispatch: PropTypes.func.isRequired,
-  router: PropTypes.object.isRequired
+  submitLogin: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = state => {
-  return {
-    user: state.auth.user
-  };
-};
-
-export default compose(
-  withRouter,
-  connect(mapStateToProps)
-)(Login);
+export default Login;

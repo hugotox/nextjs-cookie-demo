@@ -45,7 +45,7 @@ const ModalHeader = ({ children, onHide }) => {
 
 ModalHeader.propTypes = {
   onHide: PropTypes.func,
-  children: PropTypes.any
+  children: PropTypes.any,
 };
 
 export default ModalHeader;

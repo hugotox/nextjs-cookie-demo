@@ -1,8 +1,8 @@
 import React from 'react';
 import { cleanup, fireEvent } from '@testing-library/react';
 import renderWithRedux from '../../../lib/test-utils/render-with-redux';
-import Login from '../Login';
-import * as actions from '../actions';
+import LoginContainer from '../LoginContainer';
+import * as actions from 'modules/auth/actions';
 
 describe('Login page tests', () => {
   let spy;
@@ -19,7 +19,7 @@ describe('Login page tests', () => {
   });
 
   it('should render', function() {
-    const { getByTestId } = renderWithRedux(<Login />);
+    const { getByTestId } = renderWithRedux(<LoginContainer />);
     const usernameInput = getByTestId('username-input');
     const passwordInput = getByTestId('password-input');
     const loginBtn = getByTestId('login-button');
@@ -36,9 +36,9 @@ describe('Login page tests', () => {
     expect(spy).toHaveBeenCalledWith(
       {
         username: 'user@domain.com',
-        password: 'changeme'
+        password: 'changeme',
       },
-      '/'
+      '/',
     );
   });
 });

@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import Link from 'next/link';
-import Modal from '../ui/modal/Modal';
-import ModalHeader from '../ui/modal/ModalHeader';
+import Modal from 'components/ui/modal/Modal';
+import ModalHeader from 'components/ui/modal/ModalHeader';
 
 const Home = ({ logout, user }) => {
   const [showModal, setShowModal] = useState(false);
@@ -50,7 +50,7 @@ const Home = ({ logout, user }) => {
 
 Home.propTypes = {
   logout: PropTypes.func.isRequired,
-  user: PropTypes.object
+  user: PropTypes.object,
 };
 
 export default Home;

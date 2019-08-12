@@ -2,7 +2,7 @@
 import React, { useRef, useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import ModalHeader from './ModalHeader';
-import { SCREEN_SIZE } from '../../../styles/global-styles';
+import { SCREEN_SIZE } from 'styles/global-styles';
 
 const modalHeaderType = <ModalHeader />.type;
 const animationSpeed = 300;

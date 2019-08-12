@@ -23,8 +23,8 @@ app
       cookieSession({
         name: 'session',
         keys: ['key1', 'key2'],
-        maxAge: 24 * 60 * 60 * 1000 // 24 hours
-      })
+        maxAge: 24 * 60 * 60 * 1000, // 24 hours
+      }),
     );
 
     // demo auth urls, not for production usage
@@ -34,13 +34,13 @@ app
         const user = {
           id: 1,
           username: 'username',
-          permissions: ['staff']
+          permissions: ['staff'],
         };
         req.session.user = user;
         res.send(user);
       } else {
         res.status(401).send({
-          error: 'Invalid user or password'
+          error: 'Invalid user or password',
         });
       }
     });
