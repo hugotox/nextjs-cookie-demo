@@ -22,8 +22,4 @@ const LoginContainer = compose(
   ),
 )(Login);
 
-LoginContainer.getInitialProps = () => ({
-  isPublic: true,
-});
-
 export default LoginContainer;

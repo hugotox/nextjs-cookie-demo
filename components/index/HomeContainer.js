@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { compose } from 'redux';
-import withUserAuth from 'lib/auth/with-user-auth';
+import withLoginRequired from 'lib/auth/with-login-required';
 import { logout } from 'modules/auth/actions';
 
 import Home from './Home';
@@ -10,7 +10,7 @@ const mapDispatchToProps = dispatch => ({
 });
 
 export default compose(
-  withUserAuth,
+  withLoginRequired,
   connect(
     null,
     mapDispatchToProps,

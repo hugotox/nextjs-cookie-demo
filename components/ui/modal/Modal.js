@@ -1,4 +1,3 @@
-/* eslint-disable no-noninteractive-element-interactions */
 import React, { useRef, useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import ModalHeader from './ModalHeader';
@@ -128,11 +127,11 @@ Modal.propTypes = {
   visible: PropTypes.bool,
   onHide: PropTypes.func.isRequired,
   size: PropTypes.oneOf(['full', 'large', 'medium', 'small']),
-  children: PropTypes.any
+  children: PropTypes.any,
 };
 
 Modal.defaultProps = {
-  size: 'medium'
+  size: 'medium',
 };
 
 export default Modal;

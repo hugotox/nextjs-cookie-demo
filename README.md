@@ -3,23 +3,23 @@
 Starter project using [Next.js](https://github.com/zeit/next.js/) with redux,
 cookie based authentication, server side rendering and tests set up.
 
-By default, authentication is not enforced for any page. To make pages available to authenticated users only, use the `withUserAuth` higher order component.
+By default, authentication is not enforced for any page. To make pages available to authenticated users only, use the `withLoginRequired` higher order component.
 
-The `withUserAuth` HOC will make an API call server side the first time the page is accessed. It will use the session
+The `withLoginRequired` HOC will make an API call server side the first time the page is accessed. It will use the session
 cookie from the `req` object provided by Express to call `/api/whoami` endpoint. This endpoint returns a user object if authenticated, and saves it to redux store.
 
-### `withUserAuth` example usage:
+### `withLoginRequired` example usage:
 
 ```javascript
-import withUserAuth from '../lib/auth/with-user-auth';
+import withLoginRequired from '../lib/auth/with-login-required';
 import Home from '../components/index/Home';
 
-export default withUserAuth(Home);
+export default withLoginRequired(Home);
 ```
 
 If no session cookie is found, it will redirect to `/login`, otherwise it will inject the `user` object as a prop to the wrapped component.
 
-### `withUserAuth` and `connect` example
+### `withLoginRequired` and `connect` example
 
 If you need to make your page component a redux container, just connect it to redux using the `compose` function:
 
@@ -27,7 +27,7 @@ If you need to make your page component a redux container, just connect it to re
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import Home from '../components/index/Home';
-import withUserAuth from '../lib/auth/with-user-auth';
+import withLoginRequired from '../lib/auth/with-login-required';
 
 const mapStateToProps = state => {
   return {
@@ -42,7 +42,7 @@ const mapDispatchToProps = dispatch => {
 };
 
 export default compose(
-  withUserAuth,
+  withLoginRequired,
   connect(
     mapStateToProps,
     mapDispatchToProps

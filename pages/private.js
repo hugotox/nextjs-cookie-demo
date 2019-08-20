@@ -1,4 +1,3 @@
-import Private from 'components/private/Private';
-import withUserAuth from 'lib/auth/with-user-auth';
+import PrivateContainer from 'components/private/PrivateContainer';
 
-export default withUserAuth(Private);
+export default PrivateContainer;
