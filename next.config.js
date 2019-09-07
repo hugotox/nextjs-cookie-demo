@@ -5,7 +5,7 @@ module.exports = {
   publicRuntimeConfig: {
     NODE_ENV: process.env.NODE_ENV,
     PORT: process.env.PORT || 3000,
-    BASE_URL: process.env.BASE_URL,
+    BASE_URL: process.env.BASE_URL || 'http://localhost:3000',
   },
 
   webpack: (config, { buildId, dev, isServer, defaultLoaders, webpack }) => {
