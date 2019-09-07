@@ -17,7 +17,7 @@ class ExampleApp extends App {
   render() {
     const { Component, pageProps, reduxStore } = this.props;
     return (
-      <Container>
+      <>
         <Head>
           <title>Next.js Starter</title>
         </Head>
@@ -29,7 +29,7 @@ class ExampleApp extends App {
             </style>
           </div>
         </Provider>
-      </Container>
+      </>
     );
   }
 }

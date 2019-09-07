@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import ModalHeader from './ModalHeader';
 import { SCREEN_SIZE } from 'styles/global-styles';
@@ -7,7 +7,6 @@ const modalHeaderType = <ModalHeader />.type;
 const animationSpeed = 300;
 
 const Modal = ({ children, onHide, size, visible }) => {
-  const overlayRef = useRef(null);
   const [fadeIn, setFadeIn] = useState(false);
   const [display, setDisplay] = useState('none');
 
@@ -22,7 +21,6 @@ const Modal = ({ children, onHide, size, visible }) => {
 
   useEffect(() => {
     window.addEventListener('keydown', keyboardListener);
-    overlayRef.current.addEventListener('click', onHide);
 
     if (visible) {
       setDisplay('block');
@@ -40,7 +38,6 @@ const Modal = ({ children, onHide, size, visible }) => {
 
     return () => {
       window.removeEventListener('keydown', keyboardListener);
-      overlayRef.current.removeEventListener('click', onHide);
     };
   }, [visible]);
 
@@ -73,7 +70,8 @@ const Modal = ({ children, onHide, size, visible }) => {
 
   return (
     <div className="wrapper" style={{ display }}>
-      <div className="modal-overlay" ref={overlayRef} />
+      {/* eslint-disable-next-line */}
+      <div className="modal-overlay" onClick={onHide} />
       <div className={'box xmodal ' + (fadeIn ? 'fadeIn' : '')} data-testid="modal-body">
         {childrenWithProps}
       </div>
@@ -109,8 +107,9 @@ const Modal = ({ children, onHide, size, visible }) => {
 
         .xmodal.fadeIn {
           opacity: 1;
-          top: ${size === 'full' ? '0' : '10%'};
+          top: ${size === 'full' ? '0' : '50%'};
           bottom: ${size === 'full' ? '0' : 'auto'};
+          transform: translateY(-50%);
         }
 
         @media screen and (max-width: ${SCREEN_SIZE.small}) {
