@@ -3,7 +3,8 @@ import PropTypes from 'prop-types';
 import ModalHeader from './ModalHeader';
 import { SCREEN_SIZE } from 'styles/global-styles';
 
-const modalHeaderType = <ModalHeader />.type;
+const modalHeader = <ModalHeader />;
+const modalHeaderType = modalHeader.type;
 const animationSpeed = 300;
 
 const Modal = ({ children, onHide, size, visible }) => {
