@@ -24,16 +24,16 @@ const Modal = ({ children, onHide, size, visible }) => {
     window.addEventListener('keydown', keyboardListener);
 
     if (visible) {
+      document.body.style.overflow = 'hidden';
       setDisplay('block');
       setTimeout(() => {
         setFadeIn(true);
-        document.body.style.overflow = 'hidden';
       }, 50);
     } else {
+      document.body.style.overflow = '';
       setFadeIn(false);
       setTimeout(() => {
         setDisplay('none');
-        document.body.style.overflow = '';
       }, animationSpeed);
     }
 
@@ -72,7 +72,7 @@ const Modal = ({ children, onHide, size, visible }) => {
   return (
     <div className="wrapper" style={{ display }}>
       {/* eslint-disable-next-line */}
-      <div className="modal-overlay" onClick={onHide} />
+      <div className={'modal-overlay ' + (fadeIn ? 'fadeIn' : '')} onClick={onHide} />
       <div className={'box xmodal ' + (fadeIn ? 'fadeIn' : '')} data-testid="modal-body">
         {childrenWithProps}
       </div>
@@ -91,8 +91,9 @@ const Modal = ({ children, onHide, size, visible }) => {
           top: 0;
           width: 100%;
           height: 100%;
-          background-color: #999999;
-          opacity: 0.3;
+          background-color: #000;
+          opacity: 0;
+          transition: opacity ${animationSpeed}ms ease-in-out;
         }
 
         .xmodal {
@@ -100,17 +101,19 @@ const Modal = ({ children, onHide, size, visible }) => {
           width: ${width};
           min-height: 100px;
           margin: 0 auto;
-          top: -10%;
-          bottom: ${size === 'full' ? '0' : 'auto'};
-          opacity: 0;
-          transition: opacity ${animationSpeed}ms ease-in-out, top ${animationSpeed}ms ease-in-out;
-        }
-
-        .xmodal.fadeIn {
-          opacity: 1;
           top: ${size === 'full' ? '0' : '50%'};
           bottom: ${size === 'full' ? '0' : 'auto'};
+          opacity: 0;
+          transition: opacity ${animationSpeed}ms ease-in-out;
           transform: translateY(-50%);
+        }
+
+        .fadeIn {
+          opacity: 1;
+        }
+
+        .modal-overlay.fadeIn {
+          opacity: 0.5;
         }
 
         @media screen and (max-width: ${SCREEN_SIZE.small}) {
