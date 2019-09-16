@@ -35,7 +35,7 @@ const Home = ({ logout, user }) => {
         <a>Private</a>
       </Link>
       <br />
-      <Link href="/post/12">
+      <Link href="/post/[pid]" as="/post/12">
         <a>A post</a>
       </Link>
       <br />

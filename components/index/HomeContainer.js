@@ -5,6 +5,10 @@ import { logout } from 'modules/auth/actions';
 
 import Home from './Home';
 
+const mapStateToProps = state => ({
+  user: state.auth.user,
+});
+
 const mapDispatchToProps = dispatch => ({
   logout: () => dispatch(logout()),
 });
@@ -12,7 +16,7 @@ const mapDispatchToProps = dispatch => ({
 export default compose(
   withLoginRequired,
   connect(
-    null,
+    mapStateToProps,
     mapDispatchToProps,
   ),
 )(Home);
