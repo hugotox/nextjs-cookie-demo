@@ -1,20 +1,22 @@
-require('dotenv').config();
-const path = require('path');
+require('dotenv').config()
+const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin')
 
 module.exports = {
-  publicRuntimeConfig: {
-    NODE_ENV: process.env.NODE_ENV,
-    PORT: process.env.PORT || 3000,
-    BASE_URL: process.env.BASE_URL || 'http://localhost:3000',
+  env: {
+    BASE_URL: process.env.BASE_URL,
   },
+  webpack: (config) => {
+    // Fixes npm packages that depend on `fs` module
+    config.node = {
+      fs: 'empty',
+    }
 
-  webpack: (config, { buildId, dev, isServer, defaultLoaders, webpack }) => {
-    // Note: we provide webpack above so you should not `require` it
-    // Perform customizations to webpack config
-    // Important: return the modified config
+    if (config.resolve.plugins) {
+      config.resolve.plugins.push(new TsconfigPathsPlugin())
+    } else {
+      config.resolve.plugins = [new TsconfigPathsPlugin()]
+    }
 
-    // Example using webpack option
-    config.resolve.modules.push(path.resolve('./'));
-    return config;
+    return config
   },
-};
+}

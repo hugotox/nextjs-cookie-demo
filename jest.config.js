@@ -1,11 +1,9 @@
 module.exports = {
-  setupFiles: ['<rootDir>/jest.setup.js'],
+  modulePaths: ['.', './src'],
+  preset: 'ts-jest',
+  testEnvironment: 'jsdom',
   testPathIgnorePatterns: ['<rootDir>/.next/', '<rootDir>/node_modules/'],
-  moduleDirectories: ['node_modules', '<rootDir>'],
-  collectCoverageFrom: [
-    'components/**/*.{js, jsx}',
-    'lib/**/*.{js, jsx}',
-    'pages/**/*.{js,jsx}',
-    'server/**/*.{js, jsx}',
-  ],
-};
+  transform: {
+    '^.+\\.tsx?$': 'babel-jest',
+  },
+}
