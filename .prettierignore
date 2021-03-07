@@ -1,0 +1,13 @@
+.yalc
+dist
+node_modules
+src/generated
+src/shared
+babel.*
+gulpfile.*
+hmr.gulpfile.js
+jest.*
+polywrapper.js
+purex.js
+starport.js
+webpack.*

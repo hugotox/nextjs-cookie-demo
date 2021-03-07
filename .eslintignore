@@ -1,0 +1,17 @@
+.yalc
+dist
+node_modules
+src/generated
+src/shared
+src/**/*.css.d.ts
+src/**/*.less.d.ts
+src/**/*.scss.d.ts
+src/react-app-env.d.ts
+babel.*
+hmr.gulpfile.js
+jest.*
+polywrapper.js
+purex.js
+starport.js
+webpack.*
+next-env.d.ts
