@@ -5,9 +5,8 @@
 # next.js build output
 .next
 
-# dotenv environment variables file (build for Zeit Now)
-.env
-.env.build
+# dotenv environment variables
+.env*.local
 
 # Dependency directories
 node_modules/
@@ -21,3 +20,4 @@ coverage
 lcov.info
 lerna-debug.log
 .yalc
+.eslintcache

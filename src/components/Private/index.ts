@@ -1,1 +1,2 @@
-export { Private } from './Private'
+export * from './Private'
+export * from './PrivateSSP'

@@ -1,10 +1,6 @@
 import { compose } from 'redux'
 
-import { RootState } from 'modules/app'
-
-export const selectAuth = (state: RootState) => {
-  return state.auth
-}
+import { selectAuth } from 'modules/auth/selectors'
 
 export const selectUser = compose((auth) => {
   return auth.user

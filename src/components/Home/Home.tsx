@@ -1,36 +1,28 @@
-import { NextPage } from 'next'
 import Link from 'next/link'
-import React, { useEffect } from 'react'
+import React from 'react'
 
-export interface Props {
-  homeInitialProps?: string
-}
-
-export const Home: NextPage<Props> = ({ homeInitialProps }: Props) => {
-  useEffect(() => {
-    fetch('/api/auth/login', {
-      method: 'POST',
-      body: JSON.stringify({ name: 'HUGO' }),
-    }).catch(() => {})
-  }, [])
-
+export const Home = () => {
   return (
-    <div>
-      <h1>Home</h1>
-      <p>Hello, world</p>
-      <Link href="/private">
-        {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-        <a>Private</a>
-      </Link>
-      <br />
-      homeInitialProps: {homeInitialProps}
-    </div>
+    <>
+      <h1>Next.js Starter project</h1>
+      <p>Example pages:</p>
+      <ul>
+        <li>
+          <Link href="/example">
+            <a>Public page with server side props</a>
+          </Link>
+        </li>
+        <li>
+          <Link href="/private">
+            <a>Private page</a>
+          </Link>
+        </li>
+        <li>
+          <Link href="/private-ssp">
+            <a>Private page with server side props</a>
+          </Link>
+        </li>
+      </ul>
+    </>
   )
-}
-
-Home.getInitialProps = async (ctx) => {
-  // console.log('CTX HOME', ctx)
-  return {
-    homeInitialProps: 'dog',
-  }
 }
