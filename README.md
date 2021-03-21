@@ -1,3 +1,8 @@
 # Next.js starter
 
-Uses Next.js `getServerSideProps` to validate a JWT token stored in a cookie.
+Next.js starter kit with some defaults:
+
+- [x] Redux Toolkit
+- [x] JWT based authentication
+- [x] Eslint
+- [ ] Jest & Testing library
