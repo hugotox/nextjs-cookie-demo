@@ -4,6 +4,9 @@ import { NextApiRequest, NextApiResponse } from 'next'
 
 import { JWT_EXPIRES, JWT_KEY } from 'settings'
 
+// Example login handler with hardcoded creds:
+// username: "test", password: "password"
+// For production you need a real database or a real auth system
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method === 'POST') {
     const { username, password } = req.body
@@ -20,7 +23,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
           username,
         }
 
-        jwt.sign(
+        return jwt.sign(
           user,
           JWT_KEY,
           {
@@ -29,22 +32,24 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
           (err, token) => {
             if (!err && token) {
               /* Send success with token */
-              res.status(200).send({
+              return res.status(200).send({
                 success: true,
                 token,
                 user,
               })
+            } else {
+              return res.status(400).send({ error: 'Invalid login credentials' })
             }
           }
         )
       } else {
-        res.status(400).send({ error: 'Invalid login credentials' })
+        return res.status(400).send({ error: 'Invalid login credentials' })
       }
     } else {
-      res.status(400).send({ error: 'Invalid login credentials' })
+      return res.status(400).send({ error: 'Invalid login credentials' })
     }
   } else {
     // Handle any other HTTP method
-    res.status(404).send('Nothing here')
+    return res.status(404).send('Nothing here')
   }
 }

@@ -1,15 +1,15 @@
 import Cookies from 'js-cookie'
 import Router from 'next/router'
-import { Dispatch } from 'redux'
 
 import { receiveAuthData } from 'modules/auth'
+import { AppDispatch } from 'modules/app'
 
 interface Login {
   username: string
   password: string
 }
 
-export const login = ({ username, password }: Login) => async (dispatch: Dispatch) => {
+export const login = ({ username, password }: Login) => async (dispatch: AppDispatch) => {
   try {
     const response = await fetch('/api/auth/login', {
       method: 'POST',

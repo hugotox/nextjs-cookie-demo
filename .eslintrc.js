@@ -8,6 +8,7 @@ module.exports = {
     'plugin:prettier/recommended',
     'prettier',
     'plugin:jsdoc/recommended',
+    'plugin:markdown/recommended',
   ],
   parserOptions: {
     project: './tsconfig.json',

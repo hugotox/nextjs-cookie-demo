@@ -1,5 +1,6 @@
-import { combineReducers, configureStore } from '@reduxjs/toolkit'
+import { AnyAction, combineReducers, configureStore } from '@reduxjs/toolkit'
 import { createWrapper, Context, HYDRATE } from 'next-redux-wrapper'
+import { ThunkDispatch } from 'redux-thunk'
 
 import { reducer as auth } from 'modules/auth'
 import { reducer as example } from 'modules/example'
@@ -34,9 +35,11 @@ const makeStore = (context: Context) => {
   })
 }
 
-export type AppStore = ReturnType<typeof makeStore>
+export type AppDispatch = ThunkDispatch<RootState, never, AnyAction>
 
-export type AppDispatch = AppStore['dispatch']
+export type AppStore = Omit<ReturnType<typeof makeStore>, 'dispatch'> & {
+  dispatch: AppDispatch
+}
 
 // export type AppThunk<ReturnType = void> = ThunkAction<ReturnType, RootState, unknown, Action>
 
